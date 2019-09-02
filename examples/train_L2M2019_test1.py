@@ -40,16 +40,15 @@ obs_as_dict = True
 # Load walking environment
 env = L2M2019Env(seed=seed, difficulty=difficulty)
 env.change_model(model=model, difficulty=difficulty, seed=seed)
-obs_dict = env.reset(project=project, seed=seed, obs_as_dict=obs_as_dict)
+env.reset(project=project, seed=seed, obs_as_dict=obs_as_dict)
 
+# Total number of actions
 nb_actions = env.action_space.shape[0]
-
 # Total number of steps in training
 nallsteps = args.steps
 
 # Create networks for DDPG
 # Next, we build a very simple model.
-
 actor = Sequential()
 actor.add(Flatten(input_shape=(1,) + env.observation_space.shape))
 actor.add(Dense(32))
