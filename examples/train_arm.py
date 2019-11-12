@@ -47,6 +47,9 @@ nallsteps = args.steps
 # Create networks for DDPG
 # Next, we build a very simple model.
 actor = Sequential()
+
+print(env.observation_space.shape)
+
 actor.add(Flatten(input_shape=(1,) + env.observation_space.shape))
 actor.add(Dense(32))
 actor.add(Activation('relu'))
